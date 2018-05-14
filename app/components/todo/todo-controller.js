@@ -17,26 +17,30 @@ function TodoController() {
 
 
 	function draw(todos) {
-		var template = '<form><ul>'
+		var template = '<ul>'
         for (let i = 0; i < todos.length; i++) {
           const todo = todos[i];
 		  template += `
 		<li>
-		<input type="checkbox" onclick="app.controllers.todoController.toggleTodoStatus(${todo.check ? "checked" : ""})"></input>
+		<input type="checkbox" onclick="app.controllers.todoController.toggleTodoStatus(${todo.completed ? "checked" : ""})"></input>
 		<button onclick= "app.controllers.todoController.removeTodo('${todo._id}')">Delete</button>
 		<p>"${todo.description}"</p>
 	  	</li>
         ` 
 		}
-		template += "</ul></form>"
-
+		template += "</ul>"
 		document.getElementById('list').innerHTML = template
-	  }
-	  
-
-
-	// document.getElementById('number').innerText = todos.length
-	// document.getElementById("todo").innerHTML = template
+	}
+		
+	// (${todo.check ? "checked" : ""})
+	// ---OR---
+	// if (todo.completed == false) {
+	//   template +=`
+	// else{ template+=``
+	// }
+		
+		// document.getElementById('number').innerText = todos.length
+	  	// document.getElementById("todo").innerHTML = template
 
 
 
@@ -51,6 +55,7 @@ function TodoController() {
 	this.addTodoFromForm = function addTodoFromForm (e) {
 		e.preventDefault(); // <-- hey this time its a freebie don't forget this
 		// TAKE THE INFORMATION FORM THE FORM
+		debugger
 		var form = e.target
 		var todo = {
 			description: form.todo.value

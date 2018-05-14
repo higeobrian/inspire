@@ -28,15 +28,17 @@
 							<h4>Todo List</h4>
 							<div id="todo">	
 							<p>You have<span id="number">-0-</span> To Do's</p>		
-								 <div id="todo"><ul>
-								<form onsubmit="app.controllers.toDoController.addTodoFromForm()">
-								<!-- <input type="checkbox" name="" value="" placeholder=""> -->
-								<input type="text" name="user" placeholder="Type" />
+						
+								<form onsubmit="app.controllers.todoController.addTodoFromForm(event)">
+								<input type="text" name="todo" placeholder="Type" />
 								<button>SUBMIT</button>
+							</div>
+								<!-- <input type="checkbox" name="" value="" placeholder=""> -->
+								<div id="list">
 								<!-- <button onsubmit="app.controllers.todoController.addTodo('${todo._id}')">Add</button> -->
-							</ul>
+								</div>
 							</form>
-						</div>
+
 						</center>
 					</div>
 				</div>

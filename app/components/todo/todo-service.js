@@ -1,7 +1,7 @@
 function TodoService() {
 	// A local copy of your todos
 	var todoList = []
-	var baseUrl = 'https://bcw-sandbox.herokuapp.com/api/YOURNAME/todos'
+	var baseUrl = 'https://bcw-sandbox.herokuapp.com/api/Brian/todos'
 
 	// function TodoForm(number, completed, description, todoButton){
 	// 	this.number = number 
@@ -44,7 +44,8 @@ function TodoService() {
 		// var newTodo = new TodoForm(todo.number, todo.completed, todo.description, todo.todoButton)
 		$.post(baseUrl, todo)
 			.then(function(res){ // <-- WHAT DO YOU DO AFTER CREATING A NEW TODO?
-				cb()
+				
+				cb(todo)
 			}) 
 			.fail(logError)
 	}
