@@ -38,14 +38,12 @@ function TodoService() {
 
 	//this allows me to update 
 
-
 	this.addTodo = function addTodo(todo, cb) {
 		// WHAT IS THIS FOR???
 		// var newTodo = new TodoForm(todo.number, todo.completed, todo.description, todo.todoButton)
 		$.post(baseUrl, todo)
 			.then(function(res){ // <-- WHAT DO YOU DO AFTER CREATING A NEW TODO?
-				
-				cb(todo)
+				cb(res)
 			}) 
 			.fail(logError)
 	}

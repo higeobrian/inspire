@@ -8,12 +8,13 @@ function TodoController() {
 	// **** HINT: Everytime you make a change to any todo don't forget to get the todo list again
 	var todoService = new TodoService()
 	// Use this getTodos function as your callback for all other edits
+	
+	
 	function getTodos(){
 		//FYI DONT EDIT ME :)
 		todoService.getTodos(draw)
 	}
 	getTodos()
-
 
 
 	function draw(todos) {
@@ -34,7 +35,6 @@ function TodoController() {
 
 	// <p>You have<span id="number">(${todo.length})</span> To Do's</p>	
 
-		
 	// (${todo.check ? "checked" : ""})
 	// ---OR---
 	// if (todo.completed == false) {
@@ -42,18 +42,9 @@ function TodoController() {
 	// else{ template+=``
 	// }
 		
-		// document.getElementById('number').innerText = todos.length
-	  	// document.getElementById("todo").innerHTML = template
-
-
-
-
 		//WHAT IS MY PURPOSE?
 		//BUILD YOUR TODO TEMPLATE HERE
 		//DONT FORGET TO LOOP
-
-
-
 
 	this.addTodoFromForm = function addTodoFromForm (e) {
 		e.preventDefault(); // <-- hey this time its a freebie don't forget this
@@ -63,7 +54,7 @@ function TodoController() {
 			description: form.todo.value
 		// DONT FORGET TO BUILD YOUR TODO OBJECT
 		}
-		todoService.addTodo(todo, draw)
+		todoService.addTodo(todo, getTodos)
 		//PASSES THE NEW TODO TO YOUR SERVICE
 		//DON'T FORGET TO REDRAW THE SCREEN WITH THE NEW TODO
 		//YOU SHOULDN'T NEED TO CHANGE THIS
