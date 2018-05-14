@@ -1,0 +1,22 @@
+body{
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.content{
+    /* max-width: 500px; */
+    margin: auto;
+    align-content: center;
+}
+
+.container{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card{
+    padding: 3px;
+    background-color: rgb(207, 207, 243);
+}

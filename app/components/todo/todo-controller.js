@@ -7,33 +7,61 @@ function TodoController() {
 	// removeTodo takes in a todoId and sends a delete request to the server
 	// **** HINT: Everytime you make a change to any todo don't forget to get the todo list again
 	var todoService = new TodoService()
-
 	// Use this getTodos function as your callback for all other edits
 	function getTodos(){
 		//FYI DONT EDIT ME :)
 		todoService.getTodos(draw)
 	}
+	getTodos()
+
+
 
 	function draw(todos) {
+		var template = '<form><ul>'
+        for (let i = 0; i < todos.length; i++) {
+          const todo = todos[i];
+		  template += `
+		<li>
+		<input type="checkbox" onclick="app.controllers.todoController.toggleTodoStatus(${todo.check ? "checked" : ""})"></input>
+		<button onclick= "app.controllers.todoController.removeTodo('${todo._id}')">Delete</button>
+		<p>"${todo.description}"</p>
+	  	</li>
+        ` 
+		}
+		template += "</ul></form>"
+
+		document.getElementById('list').innerHTML = template
+	  }
+	  
+
+
+	// document.getElementById('number').innerText = todos.length
+	// document.getElementById("todo").innerHTML = template
+
+
+
+
 		//WHAT IS MY PURPOSE?
 		//BUILD YOUR TODO TEMPLATE HERE
-		var template = ''
 		//DONT FORGET TO LOOP
-	}
 
-	this.addTodoFromForm = function (e) {
-		e.preventDefault() // <-- hey this time its a freebie don't forget this
+
+
+
+	this.addTodoFromForm = function addTodoFromForm (e) {
+		e.preventDefault(); // <-- hey this time its a freebie don't forget this
 		// TAKE THE INFORMATION FORM THE FORM
 		var form = e.target
 		var todo = {
-			// DONT FORGET TO BUILD YOUR TODO OBJECT
+			description: form.todo.value
+		// DONT FORGET TO BUILD YOUR TODO OBJECT
 		}
-
+		todoService.addTodo(todo, draw)
 		//PASSES THE NEW TODO TO YOUR SERVICE
 		//DON'T FORGET TO REDRAW THE SCREEN WITH THE NEW TODO
 		//YOU SHOULDN'T NEED TO CHANGE THIS
-		todoService.addTodo(todo, getTodos)
-		                         //^^^^^^^ EXAMPLE OF HOW TO GET YOUR TOODOS AFTER AN EDIT
+		//^^^^^^^ EXAMPLE OF HOW TO GET YOUR TOODOS AFTER AN EDIT
+	// form.reset()
 	}
 
 	this.toggleTodoStatus = function (todoId) {
@@ -44,10 +72,18 @@ function TodoController() {
 
 	this.removeTodo = function (todoId) {
 		// ask the service to run the remove todo with this id
-
+		todoService.removeTodo(todoId, getTodos)
 		// ^^^^ THIS LINE OF CODE PROBABLY LOOKS VERY SIMILAR TO THE toggleTodoStatus
 	}
 
 	// IF YOU WANT YOUR TODO LIST TO DRAW WHEN THE PAGE FIRST LOADS WHAT SHOULD YOU CALL HERE???
 
 }
+
+
+
+// The todolist allows items to be added and removed from a list: add and remove function
+
+// The todolist shows the total count of tasks currently being tracked: status function 
+
+// The todolist takes advantage of the TodoService to provide persistent data through a Node Server

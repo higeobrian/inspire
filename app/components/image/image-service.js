@@ -4,6 +4,9 @@ function ImageService() {
 	var apiUrl = url + encodeURIComponent(url2);
 
 	this.getImage = function (callWhenDone) {
+		// $.get(url + url2)
+		// .then(res => {
+		// cb(res.data)
 		// ^^^^^^^ How do you call this function?
 		return $.get(apiUrl, function (res) {
 			res = JSON.parse(res)
@@ -12,3 +15,7 @@ function ImageService() {
 		})
 	}
 }
+
+
+//when you add an argument within the () in the getimage function, you can name it watever
+// including cb when you call it at the bottom, after it runs the function and fetches the data from local or url

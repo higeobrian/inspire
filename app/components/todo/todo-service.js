@@ -1,7 +1,24 @@
 function TodoService() {
 	// A local copy of your todos
 	var todoList = []
-	var baseUrl = 'https://inspire-server.herokuapp.com/api/todos/YOURNAMEHERE'
+	var baseUrl = 'https://bcw-sandbox.herokuapp.com/api/YOURNAME/todos'
+
+	// function TodoForm(number, completed, description, todoButton){
+	// 	this.number = number 
+	// 	this.completed = completed
+	// 	this.description = description
+	// 	this.todobutton = todoButton 
+	//   }
+
+// 	function loadTodo()
+// 	$.get(baseUrl)
+// 	.then(res => {
+// 	  // console.log(res.data)
+// 	  cb(res.data)
+// 	})
+//   }
+//   loadTodo()
+
 
 	function logError(err) {
 		console.error('UMM SOMETHING BROKE: ', err)
@@ -9,35 +26,50 @@ function TodoService() {
 		//do this without breaking the controller/service responsibilities
 	}
 
-	this.getTodos = function (draw) {
+	this.getTodos = function getTodos(draw) {
 		$.get(baseUrl)
 			.then(function (res) { // <-- WHY IS THIS IMPORTANT????
-				
+				console.log(res)
+				todoList = res["data"]
+				draw(todoList)
 			})
 			.fail(logError)
 	}
 
-	this.addTodo = function (todo) {
+	//this allows me to update 
+
+
+	this.addTodo = function addTodo(todo, cb) {
 		// WHAT IS THIS FOR???
+		// var newTodo = new TodoForm(todo.number, todo.completed, todo.description, todo.todoButton)
 		$.post(baseUrl, todo)
 			.then(function(res){ // <-- WHAT DO YOU DO AFTER CREATING A NEW TODO?
-				
+				cb()
 			}) 
 			.fail(logError)
 	}
 
-	this.toggleTodoStatus = function (todoId) {
+	this.toggleTodoStatus = function toggleTodoStatus(todoId, cb) {
 		// MAKE SURE WE THINK THIS ONE THROUGH
 		//STEP 1: Find the todo by its index **HINT** todoList
 
 		//STEP 2: Change the completed flag to the opposite of what is is **HINT** todo.completed = !todo.completed
 
 		//STEP 3: Here is that weird Ajax request because $.put doesn't exist
+		console.log(todoId)
+		var todoCheck = {}
+			for (let i = 0; i < todoList.length; i++) {
+				if (todoList[i]._id == todoId) {
+				todoCheck = todoList[i]
+			}
+		}
+		todoCheck.completed = !todoCheck.completed
+
 		$.ajax({
 			method: 'PUT',
 			contentType: 'application/json',
 			url: baseUrl + '/' + todoId,
-			data: JSON.stringify(YOURTODOVARIABLEHERE)
+			data: JSON.stringify(todoCheck)
 		})
 			.then(function (res) {
 				//DO YOU WANT TO DO ANYTHING WITH THIS?
@@ -45,9 +77,15 @@ function TodoService() {
 			.fail(logError)
 	}
 
-	this.removeTodo = function () {
+	
+
+	this.removeTodo = function (todoId, cb) {
 		// Umm this one is on you to write.... It's also unique, like the ajax call above. The method is a DELETE
-		
-	}
+			$.ajax({
+			  method: 'DELETE',
+			  url: baseUrl + '/' + todoId
+			}).then(cb)
+		  }
+
 
 }

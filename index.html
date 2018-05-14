@@ -3,42 +3,91 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Inspire</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 
+
 <body id="body">
-	<div id="weather">
-		Your Weather Template
+	<div class="container">
+		<div class="content">
+			<div class="row">
+				<div class="col-12">
+					<div class="card">
+						<center>
+							<div id="weather"></div>
+						</center>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-12">
+					<div class="card mt-3 mb-3 pt-3 pb-3">
+						<center>
+							<h4>Todo List</h4>
+							<div id="todo">	
+							<p>You have<span id="number">-0-</span> To Do's</p>		
+								 <div id="todo"><ul>
+								<form onsubmit="app.controllers.toDoController.addTodoFromForm()">
+								<!-- <input type="checkbox" name="" value="" placeholder=""> -->
+								<input type="text" name="user" placeholder="Type" />
+								<button>SUBMIT</button>
+								<!-- <button onsubmit="app.controllers.todoController.addTodo('${todo._id}')">Add</button> -->
+							</ul>
+							</form>
+						</div>
+						</center>
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+			<div class="row">
+				<div class="col-12">
+					<!-- <div class="clock"> </div> -->
+					<div class="card">
+						<center>
+							<div id="quote"></div>
+						</center>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
 	</div>
-
-	<div id="quote">
-		The Quote
-	</div>
-
-	<div id="todo">
-		<form onsubmit=""></form>
-		A Todo List
-	</div>
-
-
-
-
 	<!--JS Libraries-->
-	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<!--Services-->
 	<script src="app/components/weather/weather-service.js"></script>
 	<script src="app/components/image/image-service.js"></script>
 	<script src="app/components/quote/quote-service.js"></script>
 	<script src="app/components/todo/todo-service.js"></script>
+	<script src="app/components/clock-service.js"></script>
 
 	<!--Controllers-->
 	<script src="app/components/weather/weather-controller.js"></script>
 	<script src="app/components/image/image-controller.js"></script>
 	<script src="app/components/quote/quote-controller.js"></script>
 	<script src="app/components/todo/todo-controller.js"></script>
+	<script src="app/components/clock-controller.js"></script>
 
 	<!--Initialize App-->
 	<script src="app/init.js"></script>
+
 </body>
 
 </html>
+
+<!-- 
+weather and image service already done
+do the controllers -->
+
+
+<!-- 
+to do service change to your name, this is not finished.
+step three needs to be the data your editing() -->

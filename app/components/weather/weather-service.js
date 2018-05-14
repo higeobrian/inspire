@@ -9,7 +9,7 @@ function WeatherService() {
 			localStorage.setItem('weather', JSON.stringify(res))
 			// HEY FUN FACT 
 			// Have you ever wanted to know the temperature measured in kelvin?
-			// You should probably convert the temperature data
+			// You should probably convert the temperature data here
 			callWhenDone(res);
 		})
 	}
