@@ -1,4 +1,5 @@
 function TodoController() {
+	var todoService = new TodoService()	
 	// new up the TodoService that has already been configured for your use
 	// You will need four methods
 	// getTodos should request your api/todos and give an array of todos to your callback fn
@@ -6,9 +7,7 @@ function TodoController() {
 	// toggleTodoStatus takes in a todo marks its status as completed and puts it to the server
 	// removeTodo takes in a todoId and sends a delete request to the server
 	// **** HINT: Everytime you make a change to any todo don't forget to get the todo list again
-	var todoService = new TodoService()
 	// Use this getTodos function as your callback for all other edits
-	
 	
 	function getTodos(){
 		//FYI DONT EDIT ME :)
@@ -23,14 +22,14 @@ function TodoController() {
 		  const todo = todos[i];
 		  template += `
 		<li>
-		<input type="checkbox" onclick="app.controllers.todoController.toggleTodoStatus(${todo.completed ? "checked" : ""})"></input>
+		<input type="checkbox" onclick="app.controllers.todoController.toggleTodoStatus(${todo._id})" ${todo.completed ? "checked" : ""}></input>
 		<button onclick= "app.controllers.todoController.removeTodo('${todo._id}')">Delete</button>
 		<p>"${todo.description}"</p>
 	  	</li>
         ` 
 		}
 		template += "</ul>"
-		document.getElementById('list').innerHTML = template
+		document.getElementById('todoList').innerHTML = template
 	}
 
 	// <p>You have<span id="number">(${todo.length})</span> To Do's</p>	
@@ -62,7 +61,7 @@ function TodoController() {
 	// form.reset()
 	}
 
-	this.toggleTodoStatus = function (todoId) {
+	this.toggleTodoStatus = function (todoId, cb) {
 		// asks the service to edit the todo status
 		todoService.toggleTodoStatus(todoId, getTodos)
 		// YEP THATS IT FOR ME

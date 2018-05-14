@@ -36,11 +36,8 @@ function TodoService() {
 			.fail(logError)
 	}
 
-	//this allows me to update 
-
 	this.addTodo = function addTodo(todo, cb) {
 		// WHAT IS THIS FOR???
-		// var newTodo = new TodoForm(todo.number, todo.completed, todo.description, todo.todoButton)
 		$.post(baseUrl, todo)
 			.then(function(res){ // <-- WHAT DO YOU DO AFTER CREATING A NEW TODO?
 				cb(res)
@@ -58,8 +55,10 @@ function TodoService() {
 		console.log(todoId)
 		var todoCheck = {}
 			for (let i = 0; i < todoList.length; i++) {
+				// var todo = todoList[i]
 				if (todoList[i]._id == todoId) {
 				todoCheck = todoList[i]
+				
 			}
 		}
 		todoCheck.completed = !todoCheck.completed
@@ -71,12 +70,12 @@ function TodoService() {
 			data: JSON.stringify(todoCheck)
 		})
 			.then(function (res) {
+				cb()
 				//DO YOU WANT TO DO ANYTHING WITH THIS?
 			})
 			.fail(logError)
 	}
 
-	
 
 	this.removeTodo = function (todoId, cb) {
 		// Umm this one is on you to write.... It's also unique, like the ajax call above. The method is a DELETE
@@ -85,6 +84,5 @@ function TodoService() {
 			  url: baseUrl + '/' + todoId
 			}).then(cb)
 		  }
-
 
 }
