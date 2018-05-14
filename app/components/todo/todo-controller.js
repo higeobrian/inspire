@@ -17,9 +17,9 @@ function TodoController() {
 
 
 	function draw(todos) {
-		var template = '<ul>'
+		var template = `You have ${todos.length} To Dos <ul>`
         for (let i = 0; i < todos.length; i++) {
-          const todo = todos[i];
+		  const todo = todos[i];
 		  template += `
 		<li>
 		<input type="checkbox" onclick="app.controllers.todoController.toggleTodoStatus(${todo.completed ? "checked" : ""})"></input>
@@ -31,6 +31,9 @@ function TodoController() {
 		template += "</ul>"
 		document.getElementById('list').innerHTML = template
 	}
+
+	// <p>You have<span id="number">(${todo.length})</span> To Do's</p>	
+
 		
 	// (${todo.check ? "checked" : ""})
 	// ---OR---
@@ -55,7 +58,6 @@ function TodoController() {
 	this.addTodoFromForm = function addTodoFromForm (e) {
 		e.preventDefault(); // <-- hey this time its a freebie don't forget this
 		// TAKE THE INFORMATION FORM THE FORM
-		debugger
 		var form = e.target
 		var todo = {
 			description: form.todo.value
