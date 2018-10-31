@@ -61,7 +61,7 @@ function TodoController() {
 	// form.reset()
 	}
 
-	this.toggleTodoStatus = function (todoId, cb) {
+	this.toggleTodoStatus = function (todoId) {
 		// asks the service to edit the todo status
 		todoService.toggleTodoStatus(todoId, getTodos)
 		// YEP THATS IT FOR ME
@@ -72,15 +72,5 @@ function TodoController() {
 		todoService.removeTodo(todoId, getTodos)
 		// ^^^^ THIS LINE OF CODE PROBABLY LOOKS VERY SIMILAR TO THE toggleTodoStatus
 	}
-
 	// IF YOU WANT YOUR TODO LIST TO DRAW WHEN THE PAGE FIRST LOADS WHAT SHOULD YOU CALL HERE???
-
 }
-
-
-
-// The todolist allows items to be added and removed from a list: add and remove function
-
-// The todolist shows the total count of tasks currently being tracked: status function 
-
-// The todolist takes advantage of the TodoService to provide persistent data through a Node Server

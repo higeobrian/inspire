@@ -19,7 +19,6 @@ function TodoService() {
 //   }
 //   loadTodo()
 
-
 	function logError(err) {
 		console.error('UMM SOMETHING BROKE: ', err)
 		//CAN YOU NOTIFY THE USER IF SOMETHING BREAKS? 
@@ -48,9 +47,7 @@ function TodoService() {
 	this.toggleTodoStatus = function toggleTodoStatus(todoId, cb) {
 		// MAKE SURE WE THINK THIS ONE THROUGH
 		//STEP 1: Find the todo by its index **HINT** todoList
-
 		//STEP 2: Change the completed flag to the opposite of what is is **HINT** todo.completed = !todo.completed
-
 		//STEP 3: Here is that weird Ajax request because $.put doesn't exist
 		console.log(todoId)
 		var todoCheck = {}
@@ -58,7 +55,6 @@ function TodoService() {
 				// var todo = todoList[i]
 				if (todoList[i]._id == todoId) {
 				todoCheck = todoList[i]
-				
 			}
 		}
 		todoCheck.completed = !todoCheck.completed
@@ -70,12 +66,11 @@ function TodoService() {
 			data: JSON.stringify(todoCheck)
 		})
 			.then(function (res) {
-				cb()
+				cb(todoId)
 				//DO YOU WANT TO DO ANYTHING WITH THIS?
 			})
 			.fail(logError)
 	}
-
 
 	this.removeTodo = function (todoId, cb) {
 		// Umm this one is on you to write.... It's also unique, like the ajax call above. The method is a DELETE
