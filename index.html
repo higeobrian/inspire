@@ -17,19 +17,21 @@
 					</div>
 				
 					<div class="col-3 quoter">
-						<!-- <div class="clock"> </div> -->
+						<div class="clock"> </div>
 								<div id="quote"></div>
 					</div>
+					<div class="col-3 clocker">
+							<div id="MyClockDisplay" class="clock"></div>
+						</div>
 				</div>
 
 			<div class="row">
 				<div class="col-6 mt-3 mb-5 todoer">
-				
-						
 							<h4>Todo List</h4>
 							<div id="todo">		
 								<form onsubmit="app.controllers.todoController.addTodoFromForm(event)">
 								<input type="text" name="todo" placeholder="To Do"/>
+								<br>
 								<button>SUBMIT</button>
 							</div>
 								<!-- <input type="checkbox" name="" value="" placeholder=""> -->

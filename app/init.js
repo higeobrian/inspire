@@ -4,6 +4,6 @@ var app = {
     weatherController: new WeatherController(),
     todoController: new TodoController(),
     quoteController: new QuoteController(),
-    // clockController: new ClockController()
+    clockController: new ClockController()
   }
 }
