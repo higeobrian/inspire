@@ -17,7 +17,7 @@ function TodoController() {
 
 
 	function draw(todos) {
-		var template = `You have ${todos.length} To Dos <ul>`
+		var template = `<h2>You have ${todos.length} To Do's </h2> <ul>`
         for (let i = 0; i < todos.length; i++) {
 		  const todo = todos[i];
 		  template += `

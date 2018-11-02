@@ -11,45 +11,61 @@
 	<body id="body">
 		<div class="container">
 			<div class="content">
+
 				<div class="row">
-					<div class="col-3 weath">			
+					<div class="col-4 weath">			
 							<div id="weather"></div>
 					</div>
-				
-					<div class="col-3 quoter">
-						<div class="clock"> </div>
-								<div id="quote"></div>
-					</div>
-					<div class="col-3 clocker">
+				</div>
+
+						<div class="col-4">
 							<div id="MyClockDisplay" class="clock"></div>
 						</div>
-				</div>
-
-			<div class="row">
-				<div class="col-6 mt-3 mb-5 todoer">
-							<h4>Todo List</h4>
-							<div id="todo">		
-								<form onsubmit="app.controllers.todoController.addTodoFromForm(event)">
-								<input type="text" name="todo" placeholder="To Do"/>
-								<br>
-								<button>SUBMIT</button>
+				
+				<div class="row">
+					<div class="col-6 mt-3 mb-3 todoer">
+						<h4>Add To Your To Do List:</h4>
+						<br><br>
+						<div id="todo">		
+							<form onsubmit="app.controllers.todoController.addTodoFromForm(event)">
+									<input type="text" name="todo" placeholder="To Do"/>
+									<br>
+									<button>SUBMIT</button>
+								</div>
 							</div>
+							
+							<div class="col-6 mt-3 mb-3 todoer">
 								<!-- <input type="checkbox" name="" value="" placeholder=""> -->
 								<div id="todoList">
-								<!-- <button onsubmit="app.controllers.todoController.addTodo('${todo._id}')">Add</button> -->
+									<!-- <button onsubmit="app.controllers.todoController.addTodo('${todo._id}')">Add</button> -->
 								</div>
-							</form>
+							</form>	
+						</div>			
+					</div>
+					
+
+
+
+
+					<div class="row">
+						<div class="col-12 quoter">
+							<div id="quote"></div>
+						</div>
+					</div>
+					
+					
+					<!-- <div class="col-6 mb-5 todoer">
+						<div id="calendar-container">
+							<div id="calendar-header">
+								<span id="calendar-month-year"></span>
+							</div>
+							<div id="calendar-dates">
+							</div>
+						</div>
+					</div> -->
 					
 				</div>
-			
 			</div>
-
-			<!-- <span id="number">-0-</span> -->
-
-
-
-		</div>
-	</div>
 	<!--JS Libraries-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<!--Services-->
